@@ -1,5 +1,7 @@
 Powered by ChatGPT and Claude.
 
+# Stock_trading.ipynb
+
 # README for Stock Trading Simulation with Forex Conversion
 
 ## Overview
