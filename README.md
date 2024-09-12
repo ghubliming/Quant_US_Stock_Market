@@ -108,59 +108,59 @@ This project is open-source. Feel free to use and modify it for personal or comm
 
 
 
-### Rating
+# Rating
 
 ### 1. **Functionality: 6/10**
-      - **Strengths**: 
-        - The code does what it needs to in terms of retrieving data, converting currencies, and calculating average stock costs. It covers multiple scenarios (hourly, daily, weekly, monthly purchases).
-      
-      - **Areas for Improvement**: 
-        - Hardcoding market hours (9 AM to 4 PM) might not work for all markets or in cases of partial holidays, non-trading days, etc.
-        - Assumptions like `weekly purchases on Wednesdays` may not fit all use cases and could be made more dynamic.
-        - There's limited flexibility for customization; for example, a user might want to choose which days or times to make purchases, but the current setup doesn't allow that.
+   - **Strengths**: 
+     - The code does what it needs to in terms of retrieving data, converting currencies, and calculating average stock costs. It covers multiple scenarios (hourly, daily, weekly, monthly purchases).
+   
+   - **Areas for Improvement**: 
+     - Hardcoding market hours (9 AM to 4 PM) might not work for all markets or in cases of partial holidays, non-trading days, etc.
+     - Assumptions like `weekly purchases on Wednesdays` may not fit all use cases and could be made more dynamic.
+     - There's limited flexibility for customization; for example, a user might want to choose which days or times to make purchases, but the current setup doesn't allow that.
    
    ### 2. **Code Structure: 5/10**
-      - **Strengths**: 
-        - Functions are somewhat modular, making it easier to follow.
-      
-      - **Areas for Improvement**: 
-        - Relying on **global variables** (`hourly_purchases`, etc.) is bad practice, as it makes the code harder to maintain and debug. It’s better to encapsulate everything in functions and return those values rather than using global state.
-        - The `calculate_average_cost()` function is doing too much, and breaking it into smaller functions would make it easier to test, maintain, and understand.
-        - The code is not structured in a way that allows easy extension. Adding new functionality, such as additional types of purchases or customization of trading hours, would require significant refactoring.
+   - **Strengths**: 
+     - Functions are somewhat modular, making it easier to follow.
+   
+   - **Areas for Improvement**: 
+     - Relying on **global variables** (`hourly_purchases`, etc.) is bad practice, as it makes the code harder to maintain and debug. It’s better to encapsulate everything in functions and return those values rather than using global state.
+     - The `calculate_average_cost()` function is doing too much, and breaking it into smaller functions would make it easier to test, maintain, and understand.
+     - The code is not structured in a way that allows easy extension. Adding new functionality, such as additional types of purchases or customization of trading hours, would require significant refactoring.
    
    ### 3. **Error Handling: 4/10**
-      - **Strengths**: 
-        - There's an implicit assumption that the data retrieved from `yfinance` is always correct.
-      
-      - **Areas for Improvement**: 
-        - No handling of potential issues like missing data, incomplete data for a given date range, or invalid tickers. If `yfinance` fails to fetch data, the program will break.
-        - Currency conversion assumes the Forex data is always available at the required timestamps, which might not always be the case. More robust error-checking is needed for cases where the data does not align perfectly.
+   - **Strengths**: 
+     - There's an implicit assumption that the data retrieved from `yfinance` is always correct.
+   
+   - **Areas for Improvement**: 
+     - No handling of potential issues like missing data, incomplete data for a given date range, or invalid tickers. If `yfinance` fails to fetch data, the program will break.
+     - Currency conversion assumes the Forex data is always available at the required timestamps, which might not always be the case. More robust error-checking is needed for cases where the data does not align perfectly.
    
    ### 4. **Efficiency: 5/10**
-      - **Strengths**: 
-        - Some use of Pandas for date handling is efficient.
-      
-      - **Areas for Improvement**:
-        - The code does many individual operations in loops (e.g., converting timezones and looping through dates one by one). This could be made more efficient by vectorizing these operations using Pandas instead of looping.
-        - Checking for each hour's timestamp within the main loop could be expensive with large datasets. This could be optimized by filtering or preprocessing the timestamps in bulk.
+   - **Strengths**: 
+     - Some use of Pandas for date handling is efficient.
+   
+   - **Areas for Improvement**:
+     - The code does many individual operations in loops (e.g., converting timezones and looping through dates one by one). This could be made more efficient by vectorizing these operations using Pandas instead of looping.
+     - Checking for each hour's timestamp within the main loop could be expensive with large datasets. This could be optimized by filtering or preprocessing the timestamps in bulk.
    
    ### 5. **Documentation: 3/10**
-      - **Strengths**: 
-        - Function names are relatively descriptive, which helps a bit.
-      
-      - **Areas for Improvement**: 
-        - The code lacks meaningful comments explaining what each section does or why certain decisions were made. Someone unfamiliar with the code might struggle to follow the logic.
-        - More detail in the docstrings for each function (describing input parameters, expected outputs, and potential edge cases) would make it easier for others to understand and maintain.
-        - There’s no high-level explanation of how the different components fit together, which makes it harder to grasp the overall purpose at a glance.
+   - **Strengths**: 
+     - Function names are relatively descriptive, which helps a bit.
+   
+   - **Areas for Improvement**: 
+     - The code lacks meaningful comments explaining what each section does or why certain decisions were made. Someone unfamiliar with the code might struggle to follow the logic.
+     - More detail in the docstrings for each function (describing input parameters, expected outputs, and potential edge cases) would make it easier for others to understand and maintain.
+     - There’s no high-level explanation of how the different components fit together, which makes it harder to grasp the overall purpose at a glance.
    
    ### 6. **Readability: 5/10**
-      - **Strengths**: 
-        - Variable names are clear for the most part, so the code can be read without too much confusion.
-      
-      - **Areas for Improvement**: 
-        - Long, dense functions like `calculate_average_cost()` are difficult to read and understand. Breaking them up would help.
-        - Code could benefit from more consistent formatting, such as better use of whitespace and logical grouping of operations.
-        - The reliance on global variables makes it harder to trace where data is coming from and where it’s being used.
+   - **Strengths**: 
+     - Variable names are clear for the most part, so the code can be read without too much confusion.
+   
+   - **Areas for Improvement**: 
+     - Long, dense functions like `calculate_average_cost()` are difficult to read and understand. Breaking them up would help.
+     - Code could benefit from more consistent formatting, such as better use of whitespace and logical grouping of operations.
+     - The reliance on global variables makes it harder to trace where data is coming from and where it’s being used.
    
    ---
    
