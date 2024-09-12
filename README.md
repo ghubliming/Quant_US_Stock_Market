@@ -34,8 +34,7 @@ This Python script simulates stock purchases at different intervals (hourly, dai
    - The `calculate_average_cost()` function simulates hourly, daily, weekly, and monthly stock purchases.
    - For each purchase, it calculates the number of shares based on the amount to be invested and the stock price at that moment.
    - It includes a flag mechanism that checks whether stock data is available for a given timestamp. If data for the current day or time is missing (e.g., on a holiday or non-trading day), the flag triggers a search for the next available data point, ensuring that the simulation continues smoothly without breaking.
-   - The hardcoding of market hours (9 AM to 4 PM) is aimed at aligning with typical New York Stock Exchange (NYSE) trading times to fetch accurate timestamps from the `yfinance` package, which may otherwise return unexpected values outside of trading hours.
-
+   - Hardcoding the market hours for stocks (i.e., 9 AM to 4 PM) ensures compatibility with the timestamp structure required by the yfinance package, thereby guaranteeing accurate data retrieval for valid trading periods.
 
 4. **Average Cost Calculation**:
    After simulating purchases, the script calculates the average cost for each type of purchase using the `calculate_avg()` function.
