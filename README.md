@@ -33,7 +33,7 @@ This Python script simulates stock purchases at different intervals (hourly, dai
 3. **Simulated Purchases**:
    - The `calculate_average_cost()` function simulates hourly, daily, weekly, and monthly stock purchases.
    - For each purchase, it calculates the number of shares based on the amount to be invested and the stock price at that moment.
-   - It includes a flag mechanism that checks whether stock data is available for a given timestamp. If data for the current day or time is missing (e.g., on a holiday or non-trading day), the flag triggers a search for the next available data point, ensuring that the simulation continues smoothly without breaking.
+   - It includes a flag mechanism that checks whether stock data is available for a given timestamp. If data for the current day or time is missing (e.g., on a holiday or non-trading day), the flag triggers a search for the next available data point, ensuring that the simulation continues smoothly without breaking. Note that forex data is half an hour ahead of stock data due to limitations in the yfinance data source.
    - Hardcoding the market hours for stocks (i.e., 9 AM to 4 PM) ensures compatibility with the timestamp structure required by the yfinance package, thereby guaranteeing accurate data retrieval for valid trading periods.
 
 4. **Average Cost Calculation**:
@@ -118,10 +118,10 @@ This project is open-source. Feel free to use and modify it for personal or comm
    **Strengths**: 
    - The code successfully retrieves data, converts currencies, and calculates average stock costs. It supports multiple scenarios (hourly, daily, weekly, and monthly purchases) and adapts dynamically when market data for the current day is unavailable by fetching data from the next available day.
    
-   **Areas for Improvement**: 
+**Areas for Improvement**:
    - The current setup could be made more flexible to accommodate different purchase schedules or stock market conditions. For instance, while the code correctly handles missing data by looking for the next available timestamp, allowing more dynamic customization of purchase days and times (e.g., user-defined trading windows) would be beneficial.
    - Expanding the flexibility for different markets or custom market hours could further enhance the usability, especially for global markets or partial holidays.
-
+   - To address the issue of forex data being half an hour ahead of stock data, implementing a synchronization mechanism that adjusts forex timestamps to align with stock data could improve accuracy. This could involve adjusting forex data timestamps to match the closest available stock data or implementing a time offset correction.
    
    ### 2. **Code Structure: 5/10**
    - **Strengths**: 
