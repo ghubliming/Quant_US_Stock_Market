@@ -107,9 +107,8 @@ Total shares purchased (Monthly): XXX.XX
 
 
 ## License
-This project is open-source. Feel free to use and modify it for personal or commercial purposes.
 
-
+[LICENSE](LICENSE)
 
 # Rating
 
